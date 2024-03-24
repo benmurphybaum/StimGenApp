@@ -13,10 +13,10 @@ find_package(QT NAMES Qt6 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGL OpenGLWidgets)
 
 set(PROJECT_SOURCES
-	    Interface/MainWindow.ui
-		main.cpp
-		StimGenApp.h StimGenApp.cpp
+	    main.cpp
+		App/StimGenApp.h App/StimGenApp.cpp
 		Interface/MainWindow.h Interface/MainWindow.cpp
+		Interface/MainWindow.ui
 		Interface/StimulusDisplayWidget.h Interface/StimulusDisplayWidget.cpp
 		Interface/StimulusBank.h Interface/StimulusBank.cpp
 		Interface/StimulusObjectList.h Interface/StimulusObjectList.cpp
@@ -51,7 +51,7 @@ target_link_libraries(StimGen PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERS
 
 
 target_include_directories(StimGen PRIVATE
-	.
+	App
 	Interface
 	Stimulus
 )
