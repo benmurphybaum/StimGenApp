@@ -1,0 +1,1 @@
+This project will provide a standalone desktop application for the design and presentation of arbitrary visual stimuli for scientific research. It is based on the StimGen python project, but will be modernized and will be written in C++.
