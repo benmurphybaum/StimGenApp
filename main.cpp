@@ -3,6 +3,8 @@
 
 int main(int argc, char *argv[])
 {
+	QApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
+
 	StimGenApp stimgen(argc, argv);
 	stimgen.setStyle("fusion");
 

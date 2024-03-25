@@ -1,6 +1,8 @@
 #include "MainWindow.h"
 #include "Interface/ui_MainWindow.h"
 #include "Circle.h"
+#include "Rectangle.h"
+#include "RenderWidget.h"
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -10,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	_stimulusObjectList = ui->objectList_ListWidget;
 	_stimulusBank = ui->stimulusBank_ListWidget;
+	_stimulusPreview = ui->previewWidget;
 
 	ui->objectType_Setting->insertItems(0, QStringList({"Circle", "Rectangle"}));
 }
@@ -34,11 +37,17 @@ void MainWindow::onStimulusObjectRequested(StimulusType type)
 	switch(type)
 	{
 		case StimulusType::Circle:
-			_stimulusObjectList->add(new Circle());
+			_stimulusObjectList->add(new StimGen::Circle());
 			break;
 		case StimulusType::Rectangle:
+			_stimulusObjectList->add(new StimGen::Rectangle());
 			break;
 	}
 }
 
+void MainWindow::on_previewStimulus_Button_clicked()
+{
+	// Render the stimulus on the indicated OpenGLWidget
+	_stimulusPreview->render(_stimulusObjectList->stimulus());
+}
 

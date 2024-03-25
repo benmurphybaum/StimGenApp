@@ -17,11 +17,13 @@ set(PROJECT_SOURCES
 		App/StimGenApp.h App/StimGenApp.cpp
 		Interface/MainWindow.h Interface/MainWindow.cpp
 		Interface/MainWindow.ui
-		Interface/StimulusDisplayWidget.h Interface/StimulusDisplayWidget.cpp
+		Interface/RenderWidget.h Interface/RenderWidget.cpp
 		Interface/StimulusBank.h Interface/StimulusBank.cpp
 		Interface/StimulusObjectList.h Interface/StimulusObjectList.cpp
-		Stimulus/StimulusObject.cpp Stimulus/StimulusObject.h
+		Stimulus/StimulusObject.h Stimulus/StimulusObject.cpp
 		Stimulus/Circle.h Stimulus/Circle.cpp
+		Stimulus/Rectangle.h Stimulus/Rectangle.cpp
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -48,7 +50,6 @@ else()
 endif()
 
 target_link_libraries(StimGen PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::OpenGL Qt${QT_VERSION_MAJOR}::OpenGLWidgets)
-
 
 target_include_directories(StimGen PRIVATE
 	App

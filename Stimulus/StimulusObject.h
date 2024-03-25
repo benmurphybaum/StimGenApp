@@ -10,6 +10,24 @@ enum class StimulusType
 	Rectangle,
 };
 
+enum class ModulationType
+{
+	Square,
+	Sine,
+};
+
+struct Velocity
+{
+	int speed {0};
+	int direction {0}; // angle in degrees
+};
+
+struct Modulation
+{
+	ModulationType type {ModulationType::Sine};
+	int frequency {0};
+};
+
 class StimulusObject : public QObject
 {
 	Q_OBJECT
@@ -22,8 +40,10 @@ public:
 
 	QPoint offset() {return _offset;}
 	QPoint position() {return _position;}
+	Velocity velocity() {return _velocity;}
 
 	float intensity() {return _intensity;}
+	Modulation modulation() {return _modulation;}
 
 private:
 	QString _name;
@@ -31,8 +51,10 @@ private:
 
 	QPoint _offset {0,0};
 	QPoint _position {0,0};
+	Velocity _velocity {0,0};
 
 	float _intensity {0.0};
+	Modulation _modulation;
 };
 
 #endif // STIMULUSOBJECT_H

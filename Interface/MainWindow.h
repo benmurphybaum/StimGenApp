@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "RenderWidget.h"
 #include "StimulusObjectList.h"
 #include "StimulusBank.h"
 #include "qmenu.h"
@@ -22,12 +23,15 @@ public:
 
 private slots:
 	void on_addObject_Button_clicked();
+	void on_previewStimulus_Button_clicked();
+
 	void onStimulusObjectRequested(StimulusType type);
 private:
 	Ui::MainWindow *ui;
 
 	StimulusObjectList* _stimulusObjectList {nullptr};
 	StimulusBank* _stimulusBank {nullptr};
+	RenderWidget* _stimulusPreview {nullptr};
 };
 
 

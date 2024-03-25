@@ -3,15 +3,19 @@
 
 #include "StimulusObject.h"
 
-class Circle : public StimulusObject
+namespace StimGen
 {
-	Q_OBJECT
-public:
-	Circle();
-	int diameter() {return _diameter;}
+	class Circle : public StimulusObject
+	{
+		Q_OBJECT
+	public:
+		Circle();
+		int diameter() const {return _diameter;}
 
-private:
-	int _diameter {0};
-};
+	private:
+		int _diameter {0};
+	};
+
+}
 
 #endif // CIRCLE_H

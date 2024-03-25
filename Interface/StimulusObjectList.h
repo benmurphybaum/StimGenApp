@@ -23,6 +23,9 @@ public:
 				break;
 		}
 	}
+
+	QList<StimulusObject*> stimulus() const {return _objectList;}
+
 private:
 	QList<StimulusObject*> _objectList;
 };
