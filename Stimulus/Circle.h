@@ -11,7 +11,7 @@ namespace StimGen
 	public:
 		Circle();
 		int diameter() const {return _diameter;}
-
+		void setDiameter(int value) {_diameter = value;}
 	private:
 		int _diameter {0};
 	};

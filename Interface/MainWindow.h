@@ -21,17 +21,26 @@ public:
 	MainWindow(QWidget *parent = nullptr);
 	~MainWindow();
 
+public slots:
+	void onFrameRateUpdate(float rate) {_fpsCounter->setText(QString::number(1e9f/rate, 'f', 2) % QLatin1String(" Hz"));}
+
 private slots:
 	void on_addObject_Button_clicked();
 	void on_previewStimulus_Button_clicked();
 
 	void onStimulusObjectRequested(StimulusType type);
+	void on_diameter_Setting_valueChanged(int arg1);
+
 private:
 	Ui::MainWindow *ui;
 
 	StimulusObjectList* _stimulusObjectList {nullptr};
 	StimulusBank* _stimulusBank {nullptr};
 	RenderWidget* _stimulusPreview {nullptr};
+
+	QLabel* _fpsCounter {nullptr};
+signals:
+	void stopRendering();
 };
 
 
