@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QPoint>
 
+class RenderWidget;
+
 enum class StimulusType
 {
 	Circle,
@@ -44,6 +46,8 @@ public:
 
 	float intensity() {return _intensity;}
 	Modulation modulation() {return _modulation;}
+
+	virtual QVector<float> recalculate(RenderWidget* renderer) = 0;
 
 private:
 	QString _name;
