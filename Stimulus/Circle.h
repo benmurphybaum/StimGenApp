@@ -13,10 +13,23 @@ namespace StimGen
 		int diameter() const {return _diameter;}
 		void setDiameter(int value) {_diameter = value;}
 
+		virtual void updateControls() override;
+
 		virtual QVector<float> recalculate(RenderWidget* renderer) override;
 
 	private:
 		int _diameter {0};
+
+	public slots:
+		void onDiameterChanged(int value)
+		{
+			_diameter = value;
+		}
+
+		void onIntensityChanged(int value)
+		{
+			_intensity = value;
+		}
 	};
 
 }

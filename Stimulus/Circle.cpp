@@ -8,6 +8,11 @@ Circle::Circle()
 {
 }
 
+void Circle::updateControls()
+{
+
+}
+
 
 QVector<float> Circle::recalculate(RenderWidget* renderer)
 {

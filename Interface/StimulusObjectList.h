@@ -22,12 +22,30 @@ public:
 				addItem("Rectangle");
 				break;
 		}
+
+		// Select that item in the list
+		setCurrentRow(_objectList.size()-1);
 	}
 
 	QList<StimulusObject*> stimulus() const {return _objectList;}
 
 private:
 	QList<StimulusObject*> _objectList;
+
+private slots:
+
+	/**
+	 * @brief Relay the currentRowChanged signal onto the MainWindow with the stimulus data
+	 * @param currentRow
+	 */
+	void onCurrentRowChanged(int currentRow)
+	{
+		emit selectedStimulusChanged(_objectList.at(currentRow));
+	}
+
+signals:
+	void selectedStimulusChanged(StimulusObject* currentStimulusObject);
+
 };
 
 #endif // STIMULUSOBJECTLIST_H

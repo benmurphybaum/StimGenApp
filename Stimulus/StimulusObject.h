@@ -47,9 +47,11 @@ public:
 	float intensity() {return _intensity;}
 	Modulation modulation() {return _modulation;}
 
+	virtual void updateControls() = 0;
+
 	virtual QVector<float> recalculate(RenderWidget* renderer) = 0;
 
-private:
+protected:
 	QString _name;
 	StimulusType _type;
 

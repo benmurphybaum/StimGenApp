@@ -2,10 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMenu>
+
+#include "ObjectControlsWidget.h"
 #include "RenderWidget.h"
 #include "StimulusObjectList.h"
 #include "StimulusBank.h"
-#include "qmenu.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -29,16 +31,21 @@ private slots:
 	void on_previewStimulus_Button_clicked();
 
 	void onStimulusObjectRequested(StimulusType type);
-	void on_diameter_Setting_valueChanged(int arg1);
+	// void on_diameter_Setting_valueChanged(int arg1);
 
+	void onStimulusObjectRowChanged(StimulusObject* currentStimulusObject);
 private:
 	Ui::MainWindow *ui;
 
+	ObjectControlsWidget* _objectControls {nullptr};
 	StimulusObjectList* _stimulusObjectList {nullptr};
 	StimulusBank* _stimulusBank {nullptr};
 	RenderWidget* _stimulusPreview {nullptr};
 
 	QLabel* _fpsCounter {nullptr};
+
+	void _updateStimulusControls(StimulusObject* currentStimulusObject);
+
 signals:
 	void stopRendering();
 };

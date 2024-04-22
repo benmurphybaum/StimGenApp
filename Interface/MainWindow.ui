@@ -98,7 +98,7 @@
    <property name="minimumSize">
     <size>
      <width>200</width>
-     <height>309</height>
+     <height>329</height>
     </size>
    </property>
    <property name="maximumSize">
@@ -132,11 +132,23 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="StimulusObjectList" name="objectList_ListWidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>200</height>
+         <height>100</height>
         </size>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="dragDropMode">
+        <enum>QAbstractItemView::NoDragDrop</enum>
        </property>
       </widget>
      </item>
@@ -270,90 +282,37 @@
       </layout>
      </item>
      <item>
-      <widget class="QWidget" name="objectSettingsWidget" native="true">
+      <widget class="ObjectControlsWidget" name="objectControlsWidget" native="true">
        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
          <layout class="QHBoxLayout" name="objectType_Layout">
-          <item>
-           <widget class="QLabel" name="objectType_Label">
-            <property name="text">
-             <string>Type</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="objectType_Setting">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>2</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QGridLayout" name="circleSettings">
-          <item row="0" column="1">
-           <widget class="QSpinBox" name="diameter_Setting">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>2</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximum">
-             <number>10000</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="diameter_Label">
-            <property name="text">
-             <string>Diameter</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QDoubleSpinBox" name="intensity_Setting">
-            <property name="maximum">
-             <double>1.000000000000000</double>
-            </property>
-            <property name="singleStep">
-             <double>0.010000000000000</double>
-            </property>
-            <property name="value">
-             <double>0.500000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="intensity_Label">
-            <property name="text">
-             <string>Intensity</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
          </layout>
         </item>
        </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="previewStimulus_Button">
-       <property name="text">
-        <string>Preview</string>
-       </property>
       </widget>
      </item>
      <item>
@@ -368,6 +327,13 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="previewStimulus_Button">
+       <property name="text">
+        <string>Preview</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -510,7 +476,14 @@
    <widget class="QWidget" name="stimulusBank_Contents">
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="StimulusBank" name="stimulusBank_ListWidget"/>
+      <widget class="StimulusBank" name="stimulusBank_ListWidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -531,6 +504,12 @@
    <class>StimulusBank</class>
    <extends>QListWidget</extends>
    <header>StimulusBank.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ObjectControlsWidget</class>
+   <extends>QWidget</extends>
+   <header>ObjectControlsWidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>

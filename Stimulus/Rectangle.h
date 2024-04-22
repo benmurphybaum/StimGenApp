@@ -14,7 +14,8 @@ namespace StimGen
 		int length() const {return _length;}
 		int angle() const {return _angle;}
 
-		virtual QVector<float> recalculate(RenderWidget* renderer) {return QVector<float>();}
+		virtual void updateControls() override {};
+		virtual QVector<float> recalculate(RenderWidget* renderer) override {return QVector<float>();}
 
 	private:
 		int _width {0};

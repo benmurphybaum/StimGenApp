@@ -20,10 +20,17 @@ set(PROJECT_SOURCES
 		Interface/RenderWidget.h Interface/RenderWidget.cpp
 		Interface/StimulusBank.h Interface/StimulusBank.cpp
 		Interface/StimulusObjectList.h Interface/StimulusObjectList.cpp
+		Interface/ObjectControlsWidget.h Interface/ObjectControlsWidget.cpp
 		Stimulus/StimulusObject.h Stimulus/StimulusObject.cpp
+
+		Interface/CircleControls.ui
+		Interface/RectangleControls.ui
+
+		Interface/CircleControls.h Interface/CircleControls.cpp
+		Interface/RectangleControls.h Interface/RectangleControls.cpp
+
 		Stimulus/Circle.h Stimulus/Circle.cpp
 		Stimulus/Rectangle.h Stimulus/Rectangle.cpp
-
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

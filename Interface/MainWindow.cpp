@@ -10,14 +10,17 @@ MainWindow::MainWindow(QWidget *parent)
 {
 	ui->setupUi(this);
 
+	_objectControls = ui->objectControlsWidget;
 	_stimulusObjectList = ui->objectList_ListWidget;
 	_stimulusBank = ui->stimulusBank_ListWidget;
 	_stimulusPreview = ui->previewWidget;
 	_fpsCounter = ui->FPS_Label;
 
-	ui->objectType_Setting->insertItems(0, QStringList({"Circle", "Rectangle"}));
+	// ui->objectType_Setting->insertItems(0, QStringList({"Circle", "Rectangle"}));
 	connect(this, &MainWindow::stopRendering, _stimulusPreview, &RenderWidget::onStopRendering);
 	connect(_stimulusPreview, &RenderWidget::frameRateUpdate, this, &MainWindow::onFrameRateUpdate);
+
+	connect(_stimulusObjectList, &StimulusObjectList::selectedStimulusChanged, this, &MainWindow::onStimulusObjectRowChanged);
 }
 
 MainWindow::~MainWindow()
@@ -32,6 +35,8 @@ void MainWindow::on_addObject_Button_clicked()
 
 	QPoint menuOrigin = ui->addObject_Button->rect().bottomRight();
 	clickMenu->popup(ui->addObject_Button->mapToGlobal(menuOrigin));
+
+
 }
 
 void MainWindow::onStimulusObjectRequested(StimulusType type)
@@ -46,6 +51,8 @@ void MainWindow::onStimulusObjectRequested(StimulusType type)
 			_stimulusObjectList->add(new StimGen::Rectangle());
 			break;
 	}
+
+	// _objectControls->updateControls(_stimulusObjectList->stimulus().back());
 }
 
 void MainWindow::on_previewStimulus_Button_clicked()
@@ -62,16 +69,32 @@ void MainWindow::on_previewStimulus_Button_clicked()
 }
 
 
-void MainWindow::on_diameter_Setting_valueChanged(int arg1)
+// void MainWindow::on_diameter_Setting_valueChanged(int arg1)
+// {
+// 	if (!_stimulusObjectList->stimulus().isEmpty())
+// 	{
+// 		int selectedRow = _stimulusObjectList->currentRow();
+// 		if (selectedRow != -1)
+// 		{
+// 			StimGen::Circle* object = static_cast<StimGen::Circle*>(_stimulusObjectList->stimulus().at(selectedRow));
+// 			object->setDiameter(arg1);
+// 		}
+// 	}
+// }
+
+void MainWindow::onStimulusObjectRowChanged(StimulusObject* currentStimulusObject)
 {
-	if (!_stimulusObjectList->stimulus().isEmpty())
+	_objectControls->updateControls(currentStimulusObject);
+}
+
+void MainWindow::_updateStimulusControls(StimulusObject* currentStimulusObject)
+{
+	switch (currentStimulusObject->type())
 	{
-		int selectedRow = _stimulusObjectList->currentRow();
-		if (selectedRow != -1)
-		{
-			StimGen::Circle* object = static_cast<StimGen::Circle*>(_stimulusObjectList->stimulus().at(selectedRow));
-			object->setDiameter(arg1);
-		}
+		case StimulusType::Circle:
+			break;
+		case StimulusType::Rectangle:
+			break;
 	}
 }
 
